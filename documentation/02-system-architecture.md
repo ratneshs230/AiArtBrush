@@ -1,9 +1,9 @@
-# ART-loop System Architecture Document
+# AiArtBrush System Architecture Document
 
 ## 1. Architecture Overview
 
 ### 1.1 System Architecture Pattern
-ART-loop follows a **distributed microservices architecture** with real-time communication capabilities, implementing a **client-server model** enhanced with **WebSocket connections** for live collaboration.
+AiArtBrush follows a **distributed microservices architecture** with real-time communication capabilities, implementing a **client-server model** enhanced with **WebSocket connections** for live collaboration.
 
 ### 1.2 High-Level Architecture Diagram
 

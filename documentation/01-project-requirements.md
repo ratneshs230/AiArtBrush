@@ -1,12 +1,12 @@
-# ART-loop Project Requirements Document
+# AiArtBrush Project Requirements Document
 
 ## 1. Project Overview
 
 ### 1.1 Project Name
-**ART-loop** (AI Art Chain)
+**AiArtBrush**
 
 ### 1.2 Project Description
-ART-loop is a collaborative multiplayer web application that enables players to create evolving digital artwork through AI-powered image generation. Players take turns building upon previous artwork by submitting creative prompts, resulting in unique visual stories that showcase the power of collaborative creativity and artificial intelligence.
+AiArtBrush is a collaborative multiplayer web application that enables players to create evolving digital artwork through AI-powered image generation. Players take turns building upon previous artwork by submitting creative prompts, resulting in unique visual stories that showcase the power of collaborative creativity and artificial intelligence.
 
 ### 1.3 Project Vision
 To create an innovative platform that democratizes art creation by combining human creativity with AI technology, fostering collaboration and artistic exploration in a fun, accessible gaming environment.

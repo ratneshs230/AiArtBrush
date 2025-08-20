@@ -1,14 +1,14 @@
-# ART-loop Deployment Guide
+# AiArtBrush Deployment Guide
 
 ## 1. Overview
 
-This guide provides comprehensive deployment instructions for the ART-loop system across different environments, including development, staging, and production deployments using modern cloud platforms.
+This guide provides comprehensive deployment instructions for the AiArtBrush system across different environments, including development, staging, and production deployments using modern cloud platforms.
 
 ## 2. Deployment Architecture
 
 ### 2.1 Deployment Strategy
 
-ART-loop follows a **distributed deployment model** with separate hosting for frontend and backend components:
+AiArtBrush follows a **distributed deployment model** with separate hosting for frontend and backend components:
 
 - **Frontend**: Deployed on Vercel for optimal Next.js performance and global CDN
 - **Backend**: Deployed on Railway or Render for Node.js hosting with auto-scaling

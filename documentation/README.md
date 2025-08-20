@@ -1,8 +1,8 @@
-# ART-loop Documentation
+# AiArtBrush Documentation
 
 ## Overview
 
-This directory contains comprehensive technical documentation for the ART-loop project, a collaborative multiplayer web application for AI-powered artwork creation.
+This directory contains comprehensive technical documentation for the AiArtBrush project, a collaborative multiplayer web application for AI-powered artwork creation.
 
 ## Document Index
 
@@ -117,7 +117,7 @@ This directory contains comprehensive technical documentation for the ART-loop p
 
 ## Contributing
 
-When contributing to ART-loop:
+When contributing to AiArtBrush:
 
 1. **Read the relevant documentation** before making changes
 2. **Update documentation** when adding new features or changing APIs
@@ -143,4 +143,4 @@ When contributing to ART-loop:
 
 **Documentation Version**: 1.0  
 **Last Updated**: August 2025  
-**Maintained By**: ART-loop Development Team
+**Maintained By**: AiArtBrush Development Team

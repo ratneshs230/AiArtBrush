@@ -1,8 +1,8 @@
-# ART-loop Data Flow Document
+# AiArtBrush Data Flow Document
 
 ## 1. Overview
 
-This document describes the data flow patterns within the ART-loop system, covering user interactions, real-time communication, data persistence, and external service integrations. The system implements an event-driven architecture with real-time synchronization across multiple clients.
+This document describes the data flow patterns within the AiArtBrush system, covering user interactions, real-time communication, data persistence, and external service integrations. The system implements an event-driven architecture with real-time synchronization across multiple clients.
 
 ## 2. High-Level Data Flow
 

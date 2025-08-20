@@ -1,8 +1,8 @@
-# ART-loop Documentation Summary
+# AiArtBrush Documentation Summary
 
 ## Documentation Creation Overview
 
-This document summarizes the comprehensive technical documentation created for the ART-loop project through detailed codebase analysis and systematic documentation generation.
+This document summarizes the comprehensive technical documentation created for the AiArtBrush project through detailed codebase analysis and systematic documentation generation.
 
 ## Analysis Methodology
 

@@ -1,10 +1,10 @@
-# 🎨 ART-loop (AI Art Chain)
+# 🎨 AiArtBrush
 
 **Collaborative multiplayer artwork creation powered by AI**
 
-ART-loop is an innovative web application that enables players to create evolving digital artwork through collaborative AI-powered image generation. Players take turns building upon previous artwork by submitting creative prompts, resulting in unique visual stories that showcase the power of human creativity combined with artificial intelligence.
+AiArtBrush is an innovative web application that enables players to create evolving digital artwork through collaborative AI-powered image generation. Players take turns building upon previous artwork by submitting creative prompts, resulting in unique visual stories that showcase the power of human creativity combined with artificial intelligence.
 
-![ART-loop Demo](https://img.shields.io/badge/Status-Beta-orange)
+![AiArtBrush Demo](https://img.shields.io/badge/Status-Beta-orange)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![Node](https://img.shields.io/badge/Node-18+-green)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue)
@@ -42,8 +42,8 @@ ART-loop is an innovative web application that enables players to create evolvin
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/ART-loop.git
-cd ART-loop
+git clone https://github.com/your-org/AiArtBrush.git
+cd AiArtBrush
 
 # Install dependencies for all packages
 npm install
@@ -76,7 +76,7 @@ Open [http://localhost:3000](http://localhost:3000) to start creating collaborat
 
 ## 🏗️ Architecture
 
-ART-loop follows a modern distributed architecture:
+AiArtBrush follows a modern distributed architecture:
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -151,7 +151,7 @@ Comprehensive documentation is available in the `/documentation` directory:
 ### Project Structure
 
 ```
-ART-loop/
+AiArtBrush/
 ├── backend/          # Node.js Express server
 │   ├── src/
 │   │   ├── services/ # Business logic services
@@ -208,7 +208,7 @@ NEXT_PUBLIC_ENVIRONMENT=development
 
 ## 🚀 Deployment
 
-ART-loop is designed for modern cloud deployment:
+AiArtBrush is designed for modern cloud deployment:
 
 ### Recommended Stack
 - **Frontend**: [Vercel](https://vercel.com/) - Optimal Next.js hosting
@@ -217,7 +217,7 @@ ART-loop is designed for modern cloud deployment:
 
 ### One-Click Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-org/ART-loop)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-org/AiArtBrush)
 
 For detailed deployment instructions, see the [Deployment Guide](./documentation/07-deployment-guide.md).
 
@@ -283,8 +283,8 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 <div align="center">
 
-**Made with ❤️ by the ART-loop team**
+**Made with ❤️ by the AiArtBrush team**
 
-[Website](https://artloop.app) • [Documentation](./documentation/) • [API Reference](./documentation/05-api-documentation.md)
+[Website](https://aiartbrush.app) • [Documentation](./documentation/) • [API Reference](./documentation/05-api-documentation.md)
 
 </div>

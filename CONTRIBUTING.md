@@ -1,6 +1,6 @@
-# Contributing to ART-loop
+# Contributing to AiArtBrush
 
-First off, thank you for considering contributing to ART-loop! It's people like you that make ART-loop such a great collaborative platform for AI-powered art creation.
+First off, thank you for considering contributing to AiArtBrush! It's people like you that make AiArtBrush such a great collaborative platform for AI-powered art creation.
 
 ## Code of Conduct
 
@@ -19,7 +19,7 @@ Before creating bug reports, please check the issue list as you might find that 
 
 **How to Submit A Good Bug Report:**
 
-Bugs are tracked as [GitHub issues](https://github.com/your-org/ART-loop/issues). Create an issue and provide the following information:
+Bugs are tracked as [GitHub issues](https://github.com/your-org/AiArtBrush/issues). Create an issue and provide the following information:
 
 - **Use a clear and descriptive title**
 - **Describe the exact steps to reproduce the problem**
@@ -31,7 +31,7 @@ Bugs are tracked as [GitHub issues](https://github.com/your-org/ART-loop/issues)
 
 ### Suggesting Enhancements
 
-Enhancement suggestions are tracked as [GitHub issues](https://github.com/your-org/ART-loop/issues). When creating an enhancement suggestion, please include:
+Enhancement suggestions are tracked as [GitHub issues](https://github.com/your-org/AiArtBrush/issues). When creating an enhancement suggestion, please include:
 
 - **Use a clear and descriptive title**
 - **Provide a step-by-step description of the suggested enhancement**
@@ -43,9 +43,9 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/your-o
 ### Pull Requests
 
 The process described here has several goals:
-- Maintain ART-loop's quality
+- Maintain AiArtBrush's quality
 - Fix problems that are important to users
-- Engage the community in working toward the best possible ART-loop
+- Engage the community in working toward the best possible AiArtBrush
 - Enable a sustainable system for maintainers to review contributions
 
 **Before Submitting a Pull Request:**
@@ -60,9 +60,9 @@ The process described here has several goals:
 
 ```bash
 # Fork the repository on GitHub, then:
-git clone https://github.com/your-username/ART-loop.git
-cd ART-loop
-git remote add upstream https://github.com/your-org/ART-loop.git
+git clone https://github.com/your-username/AiArtBrush.git
+cd AiArtBrush
+git remote add upstream https://github.com/your-org/AiArtBrush.git
 ```
 
 ### 2. Set Up Development Environment
@@ -347,4 +347,4 @@ Check our [project roadmap](./README.md#roadmap) to see planned features and how
 
 ---
 
-Thank you for contributing to ART-loop! Your efforts help make collaborative AI art creation accessible and enjoyable for everyone.
+Thank you for contributing to AiArtBrush! Your efforts help make collaborative AI art creation accessible and enjoyable for everyone.

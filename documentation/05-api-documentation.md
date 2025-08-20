@@ -1,8 +1,8 @@
-# ART-loop API Documentation
+# AiArtBrush API Documentation
 
 ## 1. Overview
 
-This document provides comprehensive API documentation for the ART-loop system, covering REST endpoints, WebSocket events, data schemas, and client integration examples.
+This document provides comprehensive API documentation for the AiArtBrush system, covering REST endpoints, WebSocket events, data schemas, and client integration examples.
 
 ## 2. API Architecture
 
@@ -30,7 +30,7 @@ interface APIConfig {
 
 ### 2.3 Authentication
 
-ART-loop uses a **sessionless authentication model** for simplicity:
+AiArtBrush uses a **sessionless authentication model** for simplicity:
 - No user registration or login required
 - Player identification via WebSocket connection and nickname
 - Session management through Redis with socket ID mapping

@@ -1,8 +1,8 @@
-# ART-loop Integration Guide
+# AiArtBrush Integration Guide
 
 ## 1. Overview
 
-This document provides comprehensive integration guidance for the ART-loop system, covering external service integrations, API configurations, third-party dependencies, and extension points for future development.
+This document provides comprehensive integration guidance for the AiArtBrush system, covering external service integrations, API configurations, third-party dependencies, and extension points for future development.
 
 ## 2. External Service Integrations
 

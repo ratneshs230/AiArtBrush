@@ -1,11 +1,11 @@
 {
-  "name": "@ai-art-chain/root",
+  "name": "@aiartbrush/root",
   "version": "1.0.0",
-  "description": "ART-loop: Collaborative multiplayer artwork creation powered by AI",
+  "description": "AiArtBrush: Collaborative multiplayer artwork creation powered by AI",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/ART-loop.git"
+    "url": "git+https://github.com/your-org/AiArtBrush.git"
   },
   "keywords": [
     "ai",
@@ -18,12 +18,12 @@
     "typescript",
     "socket.io"
   ],
-  "author": "ART-loop Team",
+  "author": "AiArtBrush Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/your-org/ART-loop/issues"
+    "url": "https://github.com/your-org/AiArtBrush/issues"
   },
-  "homepage": "https://github.com/your-org/ART-loop#readme",
+  "homepage": "https://github.com/your-org/AiArtBrush#readme",
   "workspaces": [
     "frontend",
     "backend",

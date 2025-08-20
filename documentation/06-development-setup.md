@@ -1,8 +1,8 @@
-# ART-loop Development Setup Guide
+# AiArtBrush Development Setup Guide
 
 ## 1. Overview
 
-This guide provides step-by-step instructions for setting up the ART-loop development environment, including all dependencies, configuration, and best practices for local development.
+This guide provides step-by-step instructions for setting up the AiArtBrush development environment, including all dependencies, configuration, and best practices for local development.
 
 ## 2. Prerequisites
 
@@ -67,8 +67,8 @@ npm install -g pnpm
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/ART-loop.git
-cd ART-loop
+git clone https://github.com/your-org/AiArtBrush.git
+cd AiArtBrush
 
 # Check repository structure
 ls -la
@@ -90,9 +90,9 @@ npm run --silent workspaces list
 
 **Expected Output:**
 ```
-@ai-art-chain/backend
-@ai-art-chain/frontend
-@ai-art-chain/shared
+@aiartbrush/backend
+@aiartbrush/frontend
+@aiartbrush/shared
 ```
 
 ### 3.3 Environment Configuration
