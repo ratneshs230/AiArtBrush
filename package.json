@@ -1,0 +1,58 @@
+{
+  "name": "@ai-art-chain/root",
+  "version": "1.0.0",
+  "description": "ART-loop: Collaborative multiplayer artwork creation powered by AI",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/ART-loop.git"
+  },
+  "keywords": [
+    "ai",
+    "art",
+    "collaborative",
+    "multiplayer",
+    "stable-diffusion",
+    "real-time",
+    "nextjs",
+    "typescript",
+    "socket.io"
+  ],
+  "author": "ART-loop Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/your-org/ART-loop/issues"
+  },
+  "homepage": "https://github.com/your-org/ART-loop#readme",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:shared\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:shared": "npm run dev --workspace=shared",
+    "build": "npm run build:shared && npm run build --workspace=backend && npm run build --workspace=frontend",
+    "build:shared": "npm run build --workspace=shared",
+    "start": "npm run start --workspace=backend",
+    "test": "npm run test --workspaces --if-present",
+    "type-check": "npm run type-check --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "format": "npm run format --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present && rm -rf node_modules",
+    "reset": "npm run clean && npm install",
+    "health-check": "npm run health-check --workspace=backend",
+    "quality-check": "npm run lint && npm run type-check && npm run test"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "@types/node": "^20.0.0"
+  }
+}
