@@ -7,7 +7,7 @@ import type {
   Player, 
   RoomSettings,
   Game
-} from '@ai-art-chain/shared'
+} from '@aiartbrush/shared'
 
 interface GameConfig {
   maxPlayers: number
@@ -38,7 +38,7 @@ function getGameConfig(): GameConfig {
 import { roomService, sessionService, getRedis } from './redisService'
 import { gameManager } from './gameService'
 import { galleryService } from './galleryService'
-import { ART_CATEGORIES, ART_STYLES } from '@ai-art-chain/shared/src/artStyles'
+import { ART_CATEGORIES, ART_STYLES } from '@aiartbrush/shared'
 
 type IoServer = Server<ClientToServerEvents, ServerToClientEvents>
 type IoSocket = Socket<ClientToServerEvents, ServerToClientEvents>

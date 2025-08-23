@@ -42,7 +42,7 @@ AiArtBrush is an innovative web application that enables players to create evolv
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/AiArtBrush.git
+git clone https://github.com/ratneshs230/AiArtBrush.git
 cd AiArtBrush
 
 # Install dependencies for all packages
@@ -61,7 +61,7 @@ cp frontend/.env.local.example frontend/.env.local
 
 ```bash
 # Start Redis (with Docker)
-docker run -d --name artloop-redis -p 6379:6379 redis:7-alpine
+docker run -d --name aiartbrush-redis -p 6379:6379 redis:7-alpine
 
 # Start all services in development mode
 npm run dev
@@ -158,7 +158,7 @@ AiArtBrush/
 │   │   ├── controllers/ # HTTP route handlers
 │   │   └── index.ts  # Server entry point
 │   └── storage/      # Local image storage
-├── frontend/         # Next.js React application  
+├── frontend/         # Next.js React application
 │   ├── app/          # App router pages
 │   ├── components/   # React components
 │   ├── hooks/        # Custom React hooks
@@ -193,16 +193,47 @@ npm run reset        # Full reset and reinstall
 
 **Backend (.env)**
 ```bash
+# Server Configuration
 PORT=3001
-REDIS_URL=redis://localhost:6379
-GEMINI_API_KEY=your_gemini_api_key
-REPLICATE_API_TOKEN=your_replicate_token
+NODE_ENV=development
 FRONTEND_URL=http://localhost:3000
+
+# Database Configuration
+REDIS_URL=redis://localhost:6379
+
+# External API Keys (Required)
+GEMINI_API_KEY=your_gemini_api_key_here
+REPLICATE_API_TOKEN=your_replicate_token_here
+
+# AI Generation Settings (Optional)
+AI_STRENGTH=0.15              # Image generation strength (0.1-1.0, default: 0.25)
+AI_GUIDANCE_SCALE=7.5         # How closely to follow the prompt (1-20, default: 7.5)
+AI_INFERENCE_STEPS=20         # Generation quality steps (10-50, default: 30)
+AI_SCHEDULER=K_EULER          # Sampling scheduler (default: K_EULER)
+AI_NEGATIVE_PROMPT=blurry, bad quality, distorted, ugly  # What to avoid
+AI_IMAGE_SIZE=1024            # Output image size in pixels (default: 1024)
+
+# Game Configuration (Optional)
+GAME_MAX_PLAYERS=8
+GAME_ROUNDS_PER_PLAYER=2
+GAME_TURN_TIME_LIMIT=60
+GAME_VOTING_TIME_LIMIT=20
+GAME_DEFAULT_MODE=casual
+
+# Development Settings
+LOG_LEVEL=debug
+ENABLE_CORS=true
+
+# Image Storage
+IMAGES_BASE_URL=http://localhost:3001/images
 ```
 
 **Frontend (.env.local)**
 ```bash
+# Backend API Configuration
 NEXT_PUBLIC_SERVER_URL=http://localhost:3001
+
+# Environment
 NEXT_PUBLIC_ENVIRONMENT=development
 ```
 
@@ -217,7 +248,7 @@ AiArtBrush is designed for modern cloud deployment:
 
 ### One-Click Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-org/AiArtBrush)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ratneshs230/AiArtBrush)
 
 For detailed deployment instructions, see the [Deployment Guide](./documentation/07-deployment-guide.md).
 
@@ -256,8 +287,8 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 ## 📞 Support
 
 - **Documentation**: Check the `/documentation` directory
-- **Issues**: [GitHub Issues](https://github.com/your-org/ART-loop/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-org/ART-loop/discussions)
+- **Issues**: [GitHub Issues](https://github.com/your-org/AiArtBrush/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-org/AiArtBrush/discussions)
 
 ## 🔮 Roadmap
 

@@ -1,5 +1,5 @@
 import Redis from 'ioredis'
-import type { Room, Game, Player } from '@ai-art-chain/shared'
+import type { Room, Game, Player } from '@aiartbrush/shared'
 
 let redis: Redis
 

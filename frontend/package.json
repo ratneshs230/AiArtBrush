@@ -1,7 +1,10 @@
 {
   "name": "@aiartbrush/frontend",
   "version": "0.1.0",
+  "description": "AiArtBrush frontend application for collaborative AI art creation",
   "private": true,
+  "license": "MIT",
+  "author": "AiArtBrush Team",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

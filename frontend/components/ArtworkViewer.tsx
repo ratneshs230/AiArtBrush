@@ -16,7 +16,7 @@ import {
   Star,
   Crown
 } from 'lucide-react'
-import type { GameResults } from '@ai-art-chain/shared'
+import type { GameResults } from '@aiartbrush/shared'
 import Image from 'next/image'
 
 interface ArtworkViewerProps {

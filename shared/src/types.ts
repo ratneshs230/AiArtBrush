@@ -42,6 +42,7 @@ export interface Round {
   prompt: string
   previousImage?: string
   generatedImage?: string
+  originalImage?: string // External URL for img2img processing
   artworkDescription?: string // Cumulative description of what's in the artwork
   selectedStyle?: StyleSelection
   styleHistory?: ArtStyle[]

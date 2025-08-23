@@ -5,7 +5,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/AiArtBrush.git"
+    "url": "git+https://github.com/ratneshs230/AiArtBrush.git"
   },
   "keywords": [
     "ai",
@@ -21,9 +21,9 @@
   "author": "AiArtBrush Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/your-org/AiArtBrush/issues"
+    "url": "https://github.com/ratneshs230/AiArtBrush/issues"
   },
-  "homepage": "https://github.com/your-org/AiArtBrush#readme",
+  "homepage": "https://github.com/ratneshs230/AiArtBrush#readme",
   "workspaces": [
     "frontend",
     "backend",

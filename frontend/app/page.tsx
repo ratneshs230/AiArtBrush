@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSocket } from '@/hooks/useSocket'
 import { useGameStore } from '@/lib/store'
 import type { Socket } from 'socket.io-client'
-import type { ServerToClientEvents, ClientToServerEvents, StyleSelection, ArtStyle } from '@ai-art-chain/shared'
+import type { ServerToClientEvents, ClientToServerEvents, StyleSelection, ArtStyle } from '@aiartbrush/shared'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -67,7 +67,7 @@ export default function Home() {
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h1 className="text-6xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-            AI Art Chain
+            AiArtBrush
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300">
             Create evolving artwork with friends using AI

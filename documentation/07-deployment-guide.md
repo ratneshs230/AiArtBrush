@@ -25,26 +25,26 @@ graph TB
         DB_PROD[Upstash Redis]
         CDN_PROD[Vercel CDN]
     end
-    
+
     subgraph "Staging Environment"
         FE_STAGE[Vercel Preview]
         BE_STAGE[Railway Preview]
         DB_STAGE[Upstash Staging]
     end
-    
+
     subgraph "Development Environment"
         FE_DEV[Local Next.js]
         BE_DEV[Local Node.js]
         DB_DEV[Local Redis]
     end
-    
+
     FE_PROD --> BE_PROD
     BE_PROD --> DB_PROD
     FE_PROD --> CDN_PROD
-    
+
     FE_STAGE --> BE_STAGE
     BE_STAGE --> DB_STAGE
-    
+
     FE_DEV --> BE_DEV
     BE_DEV --> DB_DEV
 ```
@@ -304,16 +304,16 @@ app.get('/health', async (req, res) => {
       queue: 'active'
     }
   }
-  
+
   try {
     // Test Redis connection
     await redis.ping()
     health.services.redis = 'connected'
-    
+
     // Test AI services
     const queueStats = await queue.getJobCounts()
     health.services.queue = queueStats.waiting < 100 ? 'active' : 'overloaded'
-    
+
     res.status(200).json(health)
   } catch (error) {
     health.status = 'error'
@@ -478,7 +478,7 @@ CNAME   www     cname.vercel-dns.com.   Auto
 
 **.github/workflows/deploy.yml:**
 ```yaml
-name: Deploy ART-loop
+name: Deploy AiArtBrush
 
 on:
   push:
@@ -489,7 +489,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     services:
       redis:
         image: redis:7-alpine
@@ -500,34 +500,34 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build shared package
         run: |
           cd shared
           npm run build
-      
+
       - name: Run tests
         run: npm run test
         env:
           REDIS_URL: redis://localhost:6379
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
-      
+
       - name: Type check
         run: npm run type-check
-      
+
       - name: Lint
         run: npm run lint
 
@@ -535,10 +535,10 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Deploy to Railway
         uses: railway/railway-cli-action@v1
         with:
@@ -552,10 +552,10 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Deploy to Vercel
         uses: vercel/action@v1
         with:
@@ -601,7 +601,7 @@ jobs:
         run: |
           # Deploy backend to Railway preview
           railway deploy --environment preview
-          
+
           # Deploy frontend to Vercel preview
           vercel deploy --token ${{ secrets.VERCEL_TOKEN }}
 ```
@@ -876,7 +876,7 @@ curl -H "Origin: https://malicious-site.com" https://your-backend.railway.app/he
 
 ---
 
-**Document Version**: 1.0  
-**Last Updated**: August 2025  
-**Deployment Tested**: Vercel + Railway + Upstash  
+**Document Version**: 1.0
+**Last Updated**: August 2025
+**Deployment Tested**: Vercel + Railway + Upstash
 **Next Review**: September 2025

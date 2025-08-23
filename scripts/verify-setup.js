@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
 /**
- * ART-loop Setup Verification Script
- * 
+ * AiArtBrush Setup Verification Script
+ *
  * This script verifies that the development environment is properly configured
- * and all dependencies are available for running ART-loop.
+ * and all dependencies are available for running AiArtBrush.
  */
 
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-console.log('🎨 ART-loop Setup Verification\n');
+console.log('🎨 AiArtBrush Setup Verification\n');
 
 const checks = [];
 
@@ -20,7 +20,7 @@ function checkNodeVersion() {
   try {
     const version = process.version;
     const majorVersion = parseInt(version.slice(1).split('.')[0]);
-    
+
     if (majorVersion >= 18) {
       checks.push({ name: 'Node.js version', status: '✅', details: version });
     } else {
@@ -36,7 +36,7 @@ function checkNpmVersion() {
   try {
     const version = execSync('npm --version', { encoding: 'utf8' }).trim();
     const majorVersion = parseInt(version.split('.')[0]);
-    
+
     if (majorVersion >= 9) {
       checks.push({ name: 'npm version', status: '✅', details: version });
     } else {
@@ -53,7 +53,7 @@ function checkDependencies() {
   const backendDepsExist = fs.existsSync(path.join(__dirname, '../backend/node_modules'));
   const frontendDepsExist = fs.existsSync(path.join(__dirname, '../frontend/node_modules'));
   const sharedDepsExist = fs.existsSync(path.join(__dirname, '../shared/node_modules'));
-  
+
   if (nodeModulesExists && backendDepsExist && frontendDepsExist && sharedDepsExist) {
     checks.push({ name: 'Dependencies installed', status: '✅', details: 'All packages' });
   } else {
@@ -65,16 +65,16 @@ function checkDependencies() {
 function checkEnvironmentFiles() {
   const backendEnvExample = fs.existsSync(path.join(__dirname, '../backend/.env.example'));
   const frontendEnvExample = fs.existsSync(path.join(__dirname, '../frontend/.env.local.example'));
-  
+
   if (backendEnvExample && frontendEnvExample) {
     checks.push({ name: 'Environment templates', status: '✅', details: 'Present' });
   } else {
     checks.push({ name: 'Environment templates', status: '❌', details: 'Missing templates' });
   }
-  
+
   const backendEnv = fs.existsSync(path.join(__dirname, '../backend/.env'));
   const frontendEnv = fs.existsSync(path.join(__dirname, '../frontend/.env.local'));
-  
+
   if (backendEnv && frontendEnv) {
     checks.push({ name: 'Environment files', status: '✅', details: 'Configured' });
   } else {
@@ -131,22 +131,22 @@ function runChecks() {
 // Display results
 function displayResults() {
   console.log('📋 Setup Status:\n');
-  
+
   checks.forEach(check => {
     console.log(`${check.status} ${check.name.padEnd(25)} ${check.details}`);
   });
-  
+
   const passed = checks.filter(c => c.status === '✅').length;
   const warnings = checks.filter(c => c.status === '⚠️').length;
   const failed = checks.filter(c => c.status === '❌').length;
-  
+
   console.log('\n📊 Summary:');
   console.log(`✅ Passed: ${passed}`);
   if (warnings > 0) console.log(`⚠️ Warnings: ${warnings}`);
   if (failed > 0) console.log(`❌ Failed: ${failed}`);
-  
+
   console.log('\n🚀 Next Steps:');
-  
+
   if (failed > 0) {
     console.log('❌ Fix the failed checks before proceeding');
   } else if (warnings > 0) {
@@ -156,7 +156,7 @@ function displayResults() {
     console.log('✅ Environment is ready!');
     console.log('🎨 Start development with: npm run dev');
   }
-  
+
   console.log('\n📚 Documentation: ./documentation/06-development-setup.md');
 }
 

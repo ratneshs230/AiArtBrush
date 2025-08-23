@@ -167,14 +167,11 @@ async function generateImageWithAI(
       enhancedPrompt = result.enhancedPrompt
       newArtworkDescription = result.newArtworkDescription
     } else {
-      // Fallback enhancement
-      if (currentArtworkDescription) {
-        enhancedPrompt = `Add ${prompt} to the existing artwork, keeping all current elements visible`
-        newArtworkDescription = `${currentArtworkDescription}, ${prompt}`
-      } else {
-        enhancedPrompt = `${prompt}, artistic, detailed, vibrant colors`
-        newArtworkDescription = prompt
-      }
+      // Use smart fallback when Gemini is not available
+      console.log('🎨 AI Service: No Gemini API key, using smart fallback enhancement')
+      const fallbackResult = buildSmartFallbackPrompt(prompt, currentArtworkDescription, styleSelection, styleHistory)
+      enhancedPrompt = fallbackResult.enhancedPrompt
+      newArtworkDescription = fallbackResult.newArtworkDescription
     }
     
     console.log('🎨 AI Service: Enhanced prompt:', enhancedPrompt)
@@ -247,6 +244,169 @@ async function generateImageWithAI(
   }
 }
 
+/**
+ * Build a smart fallback prompt using all available context data
+ */
+function buildSmartFallbackPrompt(
+  prompt: string,
+  currentArtworkDescription?: string,
+  styleSelection?: any,
+  styleHistory?: any[]
+): {enhancedPrompt: string, newArtworkDescription: string} {
+  
+  const promptParts: string[] = []
+  const descriptionParts: string[] = []
+  
+  // Extract style information
+  const currentStyleName = styleSelection?.primaryStyle?.name || ''
+  const currentStyleDescription = styleSelection?.primaryStyle?.description || ''
+  const styleTemplate = styleSelection?.primaryStyle?.promptTemplate || ''
+  const styleTags = styleSelection?.primaryStyle?.tags || []
+  const accentStyleName = styleSelection?.accentStyle?.name
+  const preserveExisting = styleSelection?.preserveExisting !== false
+  const blendStrength = styleSelection?.blendStrength || 0.3
+  
+  // Process style template if available
+  const processedTemplate = styleTemplate 
+    ? styleTemplate.replace('{prompt}', prompt)
+    : ''
+  
+  // Build style history context
+  const previousStyles = styleHistory?.map(s => s.primaryStyle?.name).filter(Boolean) || []
+  const hasHistory = previousStyles.length > 0
+  
+  if (!currentArtworkDescription) {
+    // First image - establish foundation
+    if (processedTemplate) {
+      // Use the full style template as base
+      promptParts.push(processedTemplate)
+    } else {
+      // Build from components
+      promptParts.push(prompt)
+      if (currentStyleName) {
+        promptParts.push(currentStyleName.toLowerCase())
+      }
+      if (styleTags.length > 0) {
+        promptParts.push(styleTags.slice(0, 3).join(', '))
+      }
+    }
+    
+    // Add quality and composition modifiers
+    promptParts.push('artistic composition')
+    promptParts.push('detailed')
+    promptParts.push('high quality')
+    promptParts.push('collaborative art foundation')
+    
+    // Add style-specific descriptors
+    if (currentStyleDescription) {
+      const keywords = extractKeywordsFromDescription(currentStyleDescription)
+      if (keywords.length > 0) {
+        promptParts.push(keywords.join(', '))
+      }
+    }
+    
+    // Build description
+    descriptionParts.push(currentStyleName ? `${currentStyleName}:` : '')
+    descriptionParts.push(prompt)
+    
+  } else {
+    // Building on existing artwork
+    const preservationLevel = preserveExisting ? 'high' : 'medium'
+    const strengthDescription = blendStrength < 0.3 ? 'subtle' : blendStrength > 0.6 ? 'prominent' : 'balanced'
+    
+    // Start with action verb
+    promptParts.push(`Add ${prompt}`)
+    
+    // Add context about existing artwork
+    promptParts.push(`to ${currentArtworkDescription}`)
+    
+    // Apply style with template or components
+    if (processedTemplate) {
+      // Extract style-specific parts from template (remove the {prompt} part)
+      const styleSpecificParts = styleTemplate
+        .replace('{prompt}', '')
+        .split(',')
+        .filter(part => part.trim().length > 0)
+        .slice(0, 3)
+        .join(',')
+      
+      if (styleSpecificParts) {
+        promptParts.push(`with ${styleSpecificParts}`)
+      }
+    } else if (currentStyleName) {
+      promptParts.push(`in ${currentStyleName} style`)
+    }
+    
+    // Add style mixing context
+    if (hasHistory) {
+      promptParts.push(`blending with existing ${previousStyles.slice(-2).join(' and ')} elements`)
+    }
+    
+    // Add preservation instructions
+    if (preserveExisting) {
+      promptParts.push('preserving all existing textures and elements')
+      promptParts.push('maintaining visual continuity')
+    }
+    
+    // Add blend strength guidance
+    promptParts.push(`${strengthDescription} style application`)
+    
+    // Add accent style if present
+    if (accentStyleName) {
+      promptParts.push(`with ${accentStyleName} accents`)
+    }
+    
+    // Add evolution concept
+    promptParts.push('collaborative art evolution')
+    
+    // Quality modifiers
+    if (styleTags.length > 0) {
+      promptParts.push(styleTags.slice(0, 2).join(', '))
+    }
+    
+    // Build updated description
+    descriptionParts.push(currentArtworkDescription)
+    descriptionParts.push(',')
+    descriptionParts.push(currentStyleName ? `${currentStyleName}:` : '')
+    descriptionParts.push(prompt)
+  }
+  
+  return {
+    enhancedPrompt: promptParts.filter(p => p.length > 0).join(', '),
+    newArtworkDescription: descriptionParts.filter(p => p.length > 0).join(' ').replace(/\s+,/g, ',').trim()
+  }
+}
+
+/**
+ * Extract keywords from style description
+ */
+function extractKeywordsFromDescription(description: string): string[] {
+  // Common art descriptor words to extract
+  const descriptorPatterns = [
+    'realistic', 'stylized', 'detailed', 'vibrant', 'dark', 'bright',
+    'atmospheric', 'dramatic', 'soft', 'bold', 'intricate', 'minimal',
+    'textured', 'smooth', 'rough', 'glossy', 'matte', 'luminous'
+  ]
+  
+  const keywords: string[] = []
+  const lowerDesc = description.toLowerCase()
+  
+  for (const pattern of descriptorPatterns) {
+    if (lowerDesc.includes(pattern)) {
+      keywords.push(pattern)
+    }
+  }
+  
+  // Extract technique-related words
+  if (lowerDesc.includes('paint')) keywords.push('painted')
+  if (lowerDesc.includes('sketch')) keywords.push('sketched')
+  if (lowerDesc.includes('digital')) keywords.push('digital art')
+  if (lowerDesc.includes('photo')) keywords.push('photographic')
+  if (lowerDesc.includes('3d') || lowerDesc.includes('render')) keywords.push('3D rendered')
+  
+  return keywords.slice(0, 4) // Limit to avoid prompt bloat
+}
+
 async function enhancePromptWithGemini(
   prompt: string, 
   currentArtworkDescription?: string,
@@ -305,10 +465,8 @@ Respond with ONLY a JSON object:
           newArtworkDescription: parsed.artworkDescription
         }
       } catch {
-        return {
-          enhancedPrompt: `${prompt}, ${currentStyleName}, artistic composition, detailed, collaborative art foundation`,
-          newArtworkDescription: `${currentStyleName}: ${prompt}`
-        }
+        // Use smart fallback for JSON parse error
+        return buildSmartFallbackPrompt(prompt, currentArtworkDescription, styleSelection, styleHistory)
       }
     } else {
       // Building on existing - advanced style mixing and preservation
@@ -358,22 +516,14 @@ Respond with ONLY a JSON object:
           newArtworkDescription: parsed.artworkDescription
         }
       } catch {
-        return {
-          enhancedPrompt: `Add ${prompt} in ${currentStyleName} style to the existing artwork, preserving all current elements and textures, collaborative art evolution`,
-          newArtworkDescription: `${currentArtworkDescription}, ${currentStyleName}: ${prompt}`
-        }
+        // Use smart fallback for JSON parse error
+        return buildSmartFallbackPrompt(prompt, currentArtworkDescription, styleSelection, styleHistory)
       }
     }
     
   } catch (error) {
-    console.warn('🎨 AI Service: Gemini enhancement failed, using fallback:', error)
-    return {
-      enhancedPrompt: currentArtworkDescription 
-        ? `Add ${prompt} to existing artwork`
-        : `${prompt}, artistic composition`,
-      newArtworkDescription: currentArtworkDescription 
-        ? `${currentArtworkDescription}, ${prompt}`
-        : prompt
-    }
+    console.warn('🎨 AI Service: Gemini enhancement failed, using smart fallback:', error)
+    // Use smart fallback for complete Gemini failure
+    return buildSmartFallbackPrompt(prompt, currentArtworkDescription, styleSelection, styleHistory)
   }
 }

@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'AI Art Chain - Collaborative AI Art Game',
+  title: 'AiArtBrush - Collaborative AI Art Game',
   description: 'Create evolving artwork with friends using AI image generation',
 }
 

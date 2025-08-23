@@ -8,7 +8,7 @@ import { setupSocketHandlers } from './services/socketService'
 import { initializeRedis } from './services/redisService'
 import { initializeAIQueue } from './services/aiService'
 import { getGameResults } from './controllers/gameResultsController'
-import type { ServerToClientEvents, ClientToServerEvents } from '@ai-art-chain/shared'
+import type { ServerToClientEvents, ClientToServerEvents } from '@aiartbrush/shared'
 
 dotenv.config()
 

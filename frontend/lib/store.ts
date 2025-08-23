@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { Room, Player, Game, GameState } from '@ai-art-chain/shared'
+import type { Room, Player, Game, GameState } from '@aiartbrush/shared'
 
 interface GameStore extends GameState {
   isProcessingPrompt: boolean

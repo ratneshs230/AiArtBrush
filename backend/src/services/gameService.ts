@@ -8,7 +8,7 @@ import type {
   Round,
   Vote,
   VotingResults
-} from '@ai-art-chain/shared'
+} from '@aiartbrush/shared'
 import { gameService, roomService } from './redisService'
 import { generateImage } from './aiService'
 import { galleryService } from './galleryService'
@@ -57,7 +57,7 @@ class GameManager {
       index: game.currentRoundIndex,
       playerId: currentPlayer.id,
       prompt: '',
-      previousImage: game.rounds[game.currentRoundIndex - 1]?.generatedImage,
+      previousImage: game.rounds[game.currentRoundIndex - 1]?.originalImage || game.rounds[game.currentRoundIndex - 1]?.generatedImage,
       votes: [],
       status: 'waiting',
       startedAt: new Date()
@@ -184,7 +184,10 @@ class GameManager {
       
       const result = await generateImage(prompt, currentRound.previousImage, currentArtworkDescription, styleSelection, styleHistory)
       
-      // Download and store image locally
+      // Store original URL for img2img processing
+      currentRound.originalImage = result.imageUrl
+      
+      // Download and store image locally for frontend
       try {
         const localImageUrl = await imageStorageService.downloadAndStore(
           result.imageUrl, 

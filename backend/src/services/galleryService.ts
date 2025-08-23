@@ -1,5 +1,5 @@
 import { redis } from './redisService'
-import type { GameResults } from '@ai-art-chain/shared'
+import type { GameResults } from '@aiartbrush/shared'
 import { imageStorageService } from './imageStorageService'
 
 class GalleryService {

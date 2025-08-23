@@ -20,8 +20,8 @@ import {
   List,
   Eye
 } from 'lucide-react'
-import type { GameResults, ArtCategory } from '@ai-art-chain/shared'
-import { ART_CATEGORIES } from '@ai-art-chain/shared/src/artStyles'
+import type { GameResults, ArtCategory } from '@aiartbrush/shared'
+import { ART_CATEGORIES } from '@aiartbrush/shared'
 import Image from 'next/image'
 import { useSocket } from '@/hooks/useSocket'
 import { ArtworkViewer } from './ArtworkViewer'

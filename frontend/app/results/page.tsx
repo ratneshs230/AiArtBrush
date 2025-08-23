@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Download, ArrowLeft, Share2, Trophy, Palette, Users } from 'lucide-react'
 import Link from 'next/link'
-import type { GameResults } from '@ai-art-chain/shared'
+import type { GameResults } from '@aiartbrush/shared'
 
 function ResultsContent() {
   const searchParams = useSearchParams()
@@ -102,7 +102,7 @@ function ResultsContent() {
   const shareResults = () => {
     if (navigator.share) {
       navigator.share({
-        title: `AI Art Chain - Room ${results?.roomCode}`,
+        title: `AiArtBrush - Room ${results?.roomCode}`,
         text: `Check out our collaborative AI artwork created in ${results?.totalRounds} rounds!`,
         url: window.location.href
       })

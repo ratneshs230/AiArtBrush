@@ -10,9 +10,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Slider } from '@/components/ui/slider'
 import { Switch } from '@/components/ui/switch'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Search, Palette, Star, Sparkles, X } from 'lucide-react'
-import type { ArtStyle, ArtCategory, StyleSelection } from '@ai-art-chain/shared'
-import { ART_CATEGORIES, ART_STYLES, getStylesByCategory, getPopularStyles, searchStyles } from '@ai-art-chain/shared/src/artStyles'
+import { Search, Palette, Star, Sparkles, X, ImageIcon } from 'lucide-react'
+import Image from 'next/image'
+import type { ArtStyle, ArtCategory, StyleSelection } from '@aiartbrush/shared'
+import { ART_CATEGORIES, ART_STYLES, getStylesByCategory, getPopularStyles, searchStyles, STYLE_SAMPLES } from '@aiartbrush/shared'
 
 interface StyleSelectorProps {
   isOpen: boolean
@@ -140,12 +141,12 @@ export function StyleSelector({
           </div>
 
           {/* Style Grid */}
-          <ScrollArea className="h-[300px]">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <ScrollArea className="h-[450px]">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-1">
               {displayedStyles.map((style) => (
                 <Card
                   key={style.id}
-                  className={`cursor-pointer transition-all hover:shadow-md ${
+                  className={`cursor-pointer transition-all hover:shadow-md overflow-hidden ${
                     selectedPrimaryStyle?.id === style.id
                       ? 'ring-2 ring-purple-500 bg-purple-50 dark:bg-purple-900/20'
                       : selectedAccentStyle?.id === style.id
@@ -154,14 +155,31 @@ export function StyleSelector({
                   }`}
                   onClick={() => handleStyleSelect(style, false)}
                 >
+                  {/* Sample Image */}
+                  <div className="relative w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+                    {STYLE_SAMPLES[style.id] ? (
+                      <Image
+                        src={STYLE_SAMPLES[style.id]}
+                        alt={`${style.name} sample`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <ImageIcon className="w-8 h-8 text-gray-400" />
+                      </div>
+                    )}
+                    {style.isPopular && (
+                      <div className="absolute top-2 right-2 bg-yellow-500 rounded-full p-1">
+                        <Star className="w-3 h-3 text-white" fill="currentColor" />
+                      </div>
+                    )}
+                  </div>
+                  
                   <CardContent className="p-3">
                     <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <h4 className="font-medium text-sm line-clamp-2">{style.name}</h4>
-                        {style.isPopular && (
-                          <Star className="w-3 h-3 text-yellow-500" fill="currentColor" />
-                        )}
-                      </div>
+                      <h4 className="font-medium text-sm line-clamp-1">{style.name}</h4>
                       <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
                         {style.description}
                       </p>
