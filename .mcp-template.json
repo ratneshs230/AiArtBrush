@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "chrome": {
+      "command": "node",
+      "args": [
+        "/home/ratnesh/mcp-chrome/app/native-server/dist/mcp/mcp-server-stdio.js"
+      ],
+      "env": {}
+    }
+  }
+}
